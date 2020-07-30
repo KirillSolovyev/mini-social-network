@@ -1,0 +1,26 @@
+@import '../../static/sass/index.sass'
+
+.header
+	background-color: $black-main
+	width: 100%
+	position: fixed
+	z-index: 1000
+	top: 0
+	left: 0
+
+	&__logo
+		font-size: 25px
+		color: $yellow
+		text-decoration: none !important
+		
+		&:hover
+			color: $white-secondary
+
+.user-info
+	&__avatar
+		@extend .circle-avatar
+
+	&__text
+		color: $yellow !important
+		font-size: 18px
+		font-weight: 700

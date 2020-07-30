@@ -1,0 +1,38 @@
+@import '../../static/sass/index.sass';
+
+.dialog-preview
+	border-bottom: 1px solid $gray-main
+	padding-bottom: 10px 
+	cursor: pointer
+
+	&:last-of-type
+		margin-bottom: 0 !important
+
+	&__content
+		flex: 1 1 auto
+
+	&__user-avatar
+		.circle-avatar
+			width: 45px
+			height: 45px
+
+	&__user-name
+		margin: 0
+		color: $yellow
+
+	&__date
+		font-size: 12px
+		color: $gray-main
+
+	&__text
+		p
+			margin: 0
+			color: $white-main !important
+
+	&__unread-msg
+		font-size: 12px
+		padding: 0 5px
+		border-radius: 100%
+		color: $black-secondary
+		font-weight: 700
+		background-color: $yellow

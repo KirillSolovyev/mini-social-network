@@ -1,0 +1,415 @@
+@import "variables.sass"
+@import "flex-styles.sass"
+
+@font-face 
+	font-family: 'Roboto-Regular'
+	src: url('../fonts/Roboto/Roboto-Regular.eot') 
+	src: url('../fonts/Roboto/Roboto-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/Roboto/Roboto-Regular.ttf')  format('truetype'), url('../fonts/Roboto/Roboto-Regular.svg#svgFontName') format('svg')
+
+html
+	height: 100%
+	font-family: "Roboto-Regular"
+
+body
+	min-height: 100%
+
+a
+	text-decoration: none !important
+
+.circle-avatar
+	width: 35px
+	height: 35px
+	border-radius: 100%
+
+.header
+	background-color: $black-main
+	width: 100%
+	position: fixed
+	z-index: 1000
+	top: 0
+	left: 0
+
+	&__logo
+		font-size: 25px
+		color: $yellow
+		text-decoration: none !important
+		
+		&:hover
+			color: $white-secondary
+
+.btn
+	&_main
+		background-color: $black-secondary !important
+		color: $white-secondary !important
+
+		&:hover
+			opacity: 0.8
+
+	&_secondary
+		color: $black-main !important
+
+.user-info
+	&__avatar
+		@extend .circle-avatar
+
+	&__text
+		color: $yellow !important
+		font-size: 18px
+		font-weight: 700
+
+.main
+	background-color: $black-secondary
+	flex: 1 1 auto
+	margin-top: 53px
+
+.sidebar
+	&__ul
+		list-style-type: none
+		padding: 0
+	&__li
+		padding-bottom: 7px
+
+		a
+			color: $white-main
+
+			&:hover
+				color: $white-secondary
+
+.block-bg
+	background-color: #838383
+	border-radius: 5px
+	color: $white-secondary
+	margin-bottom: 20px
+	padding: 15px
+
+.post
+	@extend .block-bg
+	padding: 0
+
+	&-inner
+		padding: 15px
+	
+	&__author
+		color: $yellow !important
+		font-weight: 700
+
+		&:hover
+			text-decoration: underline !important
+
+	&__avatar
+		@extend .circle-avatar
+
+	&__image
+		width: 100%
+
+	&__icon
+		min-width: 25px
+		height: 25px
+		margin-bottom: 0
+		cursor: pointer
+		background-size: cover
+		background-repeat: no-repeat
+
+		&_like
+			background-image: url("../images/like.svg")
+			padding-left: 30px
+			background-size: 25px 25px
+			&:hover, &-active
+				background-image: url("../images/like_active.svg")
+
+	&__comments
+		border-top: 1px solid $gray-main
+		padding: 15px 20px
+
+.comment
+	margin-bottom: 5px
+
+	&:last-of-type
+		.comment__content
+			border: none
+
+	&__content
+		width: 100%
+		padding-bottom: 5px
+		border-bottom: 1px solid $gray-main
+
+	&__author-avatar img
+		@extend .circle-avatar
+
+	&__author
+		font-weight: 700
+		color: $yellow !important
+		line-height: 1
+		font-size: 14px
+
+		&:hover
+			text-decoration: underline !important
+
+	&__text
+		font-size: 14px
+		line-height: 1.2
+		margin-bottom: 0
+
+	&__date
+		font-size: 12px
+		color: $gray-main
+		margin-bottom: 0
+
+	&__reply
+		font-size: 12px
+		color: $yellow
+		cursor: pointer
+		font-weight: 700
+
+		&:hover
+			text-decoration: underline
+
+	&__likes
+		padding-left: 17px
+		background-size: 15px 15px
+		background-repeat: no-repeat
+		height: 15px
+		font-size: 12px
+		cursor: pointer
+		background-image: url("../images/like.svg")
+
+		&:hover
+			background-image: url("../images/like_active_white.svg")
+
+.reply
+	&__avatar img
+		@extend .circle-avatar
+
+	&__input
+		@include placeholder($white-secondary)
+		outline: none
+		border: none
+		border-bottom: 1px solid $white-secondary
+		color: $white-secondary
+		padding: 3px 0
+		background-color: transparent
+		font-size: 14px
+		width: 100%
+
+	&__send
+		cursor: pointer
+		padding: 10px 0 10px 10px
+
+		img
+			width: 20px
+
+	&_comment
+		padding-left: 50px
+
+		.reply__avatar img
+			width: 30px
+			height: 30px
+
+.comment-replies
+	padding-left: 50px
+
+	.comment
+		&__author-avatar img
+			width: 30px
+			height: 30px
+
+.bold-yellow
+	color: $yellow !important
+	font-weight: 700
+
+	&:hover
+		text-decoration: underline !important
+
+.views-count
+	font-size: 14px
+	color: $white-secondary
+
+.set-avatar
+	@extend .block-bg
+
+	cursor: pointer
+
+	img
+		width: 100%
+		border-radius: 5px
+
+	&__update-avatar
+		background-color: $black-secondary
+		border-radius: 5px
+		text-align: center
+		padding: 3px
+
+		&_inactive
+			background-color: #686868
+
+		&:hover
+			opacity: 0.9
+
+.friends-list
+	padding: 8px 15px 15px 15px
+
+	&__title
+		color: $yellow !important
+
+		&:hover
+			text-decoration: underline !important
+
+.friend-icon
+	width: 33.33%
+	text-align: center
+	margin-bottom: 8px
+
+	.circle-avatar
+		width: 70%
+		height: auto
+
+	&__name
+		color: $white-secondary !important
+		font-size: 14px
+
+		&:hover
+			text-decoration: underline !important
+
+.input-with-icons
+	position: relative
+
+.input-camera
+	position: absolute
+	cursor: pointer
+	width: 20px
+	height: 20px
+	background-size: cover
+	background-position: center
+	background-repeat: no-repeat
+	background-image: url("../images/camera.svg")
+	top: calc(50% - 10px)
+
+.user-data
+	&__block
+		border-bottom: 1px solid $gray-main
+
+	&__name
+		font-size: 30px
+		color: $yellow
+		margin-bottom: 0
+
+	&__item
+		color: $black-main
+		margin-bottom: 3px
+		font-size: 15px
+
+		&:last-of-type
+			margin-bottom: 0
+
+	&__span
+		color: $white-secondary
+
+.dialog-preview
+	border-bottom: 1px solid $gray-main
+	padding-bottom: 10px 
+	cursor: pointer
+
+	&:last-of-type
+		margin-bottom: 0 !important
+
+	&__content
+		flex: 1 1 auto
+
+	&__user-avatar
+		.circle-avatar
+			width: 45px
+			height: 45px
+
+	&__user-name
+		margin: 0
+		color: $yellow
+
+	&__date
+		font-size: 12px
+		color: $gray-main
+
+	&__text
+		p
+			margin: 0
+
+	&__unread-msg
+		font-size: 12px
+		padding: 0 5px
+		border-radius: 100%
+		color: $black-secondary
+		font-weight: 700
+		background-color: $yellow
+
+.chat
+	height: calc(100vh - 69px)
+	overflow: hidden
+
+	&__header
+		position: relative
+		z-index: 100
+		background-color: #6c6c6c
+		border-radius: 5px 5px 0 0
+		margin: 0 !important
+
+	&__user-name
+		color: $white-secondary !important
+		font-size: 20px
+
+		&:hover
+			opacity: 0.8
+
+	&__box
+		overflow-y: auto
+		border-radius: 0
+		padding: 20px
+		margin-bottom: 0
+
+	&__content
+		p
+			margin: 0
+
+	&__messages-date
+		text-align: center
+		margin-bottom: 15px
+		color: $gray-main
+
+	&__footer
+		border-radius: 0 0 5px 5px
+
+.btn-back
+	color: $white-secondary !important
+
+	&:hover
+		opacity: 0.8
+
+.message
+	&__author-name
+		color: $yellow !important
+
+		&:hover
+			text-decoration: underline !important
+
+	&__time
+		font-size: 14px
+		color: $gray-main
+
+.friend-requests
+	&__header
+		span
+			color: $gray-main
+			font-size: 0.8em
+
+	&__request
+		.circle-avatar
+			width: 55px
+			height: 55px
+
+		&:last-of-type
+			margin-bottom: 0 !important
+
+.friend-name
+	color: $yellow !important
+	font-size: 18px	
+
+	&:hover
+		text-decoration: underline !important

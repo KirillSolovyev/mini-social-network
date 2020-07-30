@@ -1,0 +1,16 @@
+$black-main: #313131
+$black-secondary: #4c4c4c
+$white-main: #eaeaea
+$white-secondary: #fff
+$gray-main: #a3a3a3
+$yellow: #fccd00
+
+@mixin placeholder($color)
+	&::-webkit-input-placeholder
+		color: $color
+	&:-moz-placeholder
+		color: $color
+	&::-moz-placeholder
+		color: $color
+	&:-ms-input-placeholder
+		color: $color

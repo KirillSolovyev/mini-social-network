@@ -1,0 +1,60 @@
+@import "./variables.sass"
+@import "./flex-styles.sass"
+
+@font-face 
+	font-family: 'Roboto-Regular'
+	src: url('../fonts/Roboto/Roboto-Regular.ttf')  format('truetype')
+
+html
+	height: 100%
+	font-family: "Roboto-Regular"
+
+body
+	min-height: 100%
+
+a
+	text-decoration: none !important
+
+.circle-avatar
+	width: 35px
+	height: 35px
+	border-radius: 100%
+
+.btn
+	&_main
+		background-color: $black-secondary !important
+		color: $white-secondary !important
+
+		&:hover
+			opacity: 0.8
+
+	&_secondary
+		color: $black-main !important
+
+.block-bg
+	background-color: #838383
+	border-radius: 5px
+	color: $white-secondary
+	margin-bottom: 20px
+	padding: 15px
+
+.input-with-icons
+	position: relative
+
+.input-camera
+	position: absolute
+	cursor: pointer
+	width: 20px
+	height: 20px
+	background-size: cover
+	background-position: center
+	background-repeat: no-repeat
+	background-image: url("../images/camera.svg")
+	top: calc(50% - 10px)
+
+.bold-yellow
+	color: $yellow !important
+	font-weight: 700
+
+	&:hover
+		text-decoration: underline !important

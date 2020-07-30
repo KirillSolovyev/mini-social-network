@@ -1,0 +1,33 @@
+@import '../../static/sass/index.sass'
+
+.reply
+	&__avatar img
+		@extend .circle-avatar
+
+	&__input
+		@include placeholder($white-secondary)
+		outline: none
+		border: none
+		border-bottom: 1px solid $white-secondary
+		color: $white-secondary
+		padding: 3px 0
+		background-color: transparent
+		font-size: 14px
+		width: 100%
+
+	&__send
+		cursor: pointer
+		padding: 10px 0 10px 10px
+		background-color: transparent
+		border: none !important
+		outline: none !important
+
+		img
+			width: 20px
+
+	&_comment
+		padding-left: 50px
+
+		.reply__avatar img
+			width: 30px
+			height: 30px

@@ -1,0 +1,44 @@
+@import '../../static/sass/index.sass'
+
+.post
+	@extend .block-bg
+	padding: 0
+
+	&-inner
+		padding: 15px
+	
+	&__author
+		color: $yellow !important
+		font-weight: 700
+
+		&:hover
+			text-decoration: underline !important
+
+	&__avatar
+		@extend .circle-avatar
+
+	&__image
+		width: 100%
+
+	&__icon
+		min-width: 25px
+		height: 25px
+		margin-bottom: 0
+		cursor: pointer
+		background-size: cover
+		background-repeat: no-repeat
+
+		&_like
+			background-image: url("../../static/images/like.svg")
+			padding-left: 30px
+			background-size: 25px 25px
+			&:hover, &-active
+				background-image: url("../../static/images/like_active.svg")
+
+	&__comments
+		border-top: 1px solid $gray-main
+		padding: 15px 20px
+
+.views-count
+	font-size: 14px
+	color: $white-secondary
