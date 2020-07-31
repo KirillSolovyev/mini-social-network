@@ -1,89 +1,54 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import './UserPage.sass';
-import catImg from '../../static/images/cat.jpeg';
-import CreatePost from '../CreatePost/CreatePost';
-import Post from '../Post/Post';
+import UserPageInner from './UserPageInner';
+import { getUsers } from '../../services/userService';
+import { getUserPosts as getOtherUserPosts } from '../../services/postService';
 import { getUserPosts } from '../../redux/actions/actions';
 
 class UserPage extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state ={
+			user: null,
+			posts: null,
+			isSelf: false
+		};
+	}
+
 	componentDidMount() {
-		if(this.props.user){
-			this.props.getUserPosts(this.props.user.id);
+		this.setUser();
+	}
+
+	componentDidUpdate(prevProps) {
+		const { match: { params: prevParams } } = prevProps;
+		const { match: { params } } = this.props;
+		if(prevParams.userId !== params.userId) {
+			this.setUser();
 		}
 	}
-	
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		if(!prevProps.user || prevProps.user.id !== this.props.user.id){
-			this.props.getUserPosts(this.props.user.id);
+
+	setUser() {
+		const { match: { params } } = this.props;
+		if(this.props.user) {
+			if(parseInt(params.userId) === this.props.user.id) {
+				this.setState({ isSelf: true });
+				this.props.getUserPosts(this.props.user.id);
+			} else {
+				getUsers([parseInt(params.userId)])
+				.then(users => {
+					return getOtherUserPosts(users[0].id).then(res => ({ user: users[0], posts: res }));
+				})
+				.then(res => this.setState({ user: res.user, posts: res.posts, isSelf: false }));
+			}
 		}
 	}
 
 	render() {
-		return (
-			<div className="content col-sm-8">
-				<div className="row">
-					<div className="user-left col-sm-4">
-						<div className="set-avatar">
-							<img className="mb-2" src={catImg} alt="Avatar" />
-							<div className="set-avatar__update-avatar">Edit</div>
-						</div>
-						<div className="block-bg friends-list">
-							<Link className="friends-list__title" to="/friends">Friends 3</Link>
-							<div className="flex wrap mt-2">
-								<div className="flex flex-column friend-icon">
-									<a href="#">
-										<img src={catImg} alt="Avatar" className="circle-avatar mb-1" />
-									</a>
-									<a href="#" className="friend-icon__name">Kir Ill</a>
-								</div>
-								<div className="flex flex-column friend-icon">
-									<a href="#">
-										<img src={catImg} alt="Avatar" className="circle-avatar mb-1" />
-									</a>
-									<a href="#" className="friend-icon__name">Kir Ill</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className="col-sm-8">
-						<div className="block-bg user-data">
-							<div className="user-data__block mb-2">
-								<h3 className="user-data__name">Kir Ill</h3>
-							</div>
-							<div>
-								<p className="user-data__item">
-									Address:
-									<span className="user-data__span ml-1">
-										{this.props.user.address && `${this.props.user.address.city} ${this.props.user.address.street}`}
-									</span>
-								</p>
-								<p className="user-data__item">
-									Phone number:
-									<span className="user-data__span ml-1">
-										{this.props.user.phone}
-									</span>
-								</p>
-								<p className="user-data__item">
-									Company:
-									<span className="user-data__span ml-1">
-										{this.props.user.company && this.props.user.company.name}
-									</span>
-								</p>
-							</div>
-						</div>
-						<CreatePost />
-						{ 
-							this.props.user && this.props.user.posts
-							? this.props.user.posts.map(post => <Post key={post.id} post={post} author={this.props.user} />)
-							: <div>Loading...</div>
-						}
-					</div>
-				</div>
-			</div>
-		);
+		return this.state.isSelf
+				? <UserPageInner user={this.props.user} posts={this.props.user.posts} isSelf={this.state.isSelf}/>
+				: <UserPageInner user={this.state.user} posts={this.state.posts} isSelf={this.state.isSelf}/>;
 	}
 }
 
@@ -91,4 +56,4 @@ const mapStateToProps = (state) => ({
 	user: state.user
 });
 
-export default connect(mapStateToProps, { getUserPosts })(UserPage);
+export default connect(mapStateToProps, { getUserPosts })(withRouter(UserPage));

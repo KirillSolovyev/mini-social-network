@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import './App.sass';
 import Header from './components/Header/Header';
@@ -28,7 +28,7 @@ class App extends React.Component {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route path="/user">
+						<Route path={`/users/:userId`}>
 							<UserPage />
 						</Route>
 						<Route path="/dialogues">
@@ -36,6 +36,9 @@ class App extends React.Component {
 						</Route>
 						<Route path="/friends">
 							<FriendsPage />
+						</Route>
+						<Route path="*">
+							<Redirect to="/" />
 						</Route>
 					</Switch>
 				</MainSection>

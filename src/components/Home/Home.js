@@ -12,12 +12,6 @@ class Home extends React.Component {
 		}
 	}
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		if(!prevProps.user || prevProps.user.id !== this.props.user.id){
-			this.props.getUserPosts(this.props.user.id);
-		}
-	}
-
 	render() {
 		return (
 			<div className="content col-sm-6">

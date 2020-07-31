@@ -7,7 +7,7 @@ const initialState = {
 function rootReducer(state = initialState, action) {
 	switch(action.type) {
 		case USER.RETRIEVE:
-			return { ...state, user: action.payload };
+			return { ...state, user: { ...action.payload, friends: [2, 3, 6]} };
 		case USER.POSTS:
 			return { ...state, user: { ...state.user, posts: action.payload } };
 		case USER.CREATE_POST:

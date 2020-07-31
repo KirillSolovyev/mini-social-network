@@ -15,7 +15,7 @@ class Header extends React.Component {
 							<Link to="/" className="header__logo">Tedarium</Link>
 						</div>
 						<div className="user-info flex justify-end user-info_mini col-sm-3 offset-sm-6">
-							<Link to="/user" className="user-info__text flex items-center">
+							<Link to={`/users/${this.props.user.id}`} className="user-info__text flex items-center">
 								{this.props.user.name}
 								<img className="user-info__avatar ml-2" src={img} alt={this.props.user.name} />
 							</Link>
