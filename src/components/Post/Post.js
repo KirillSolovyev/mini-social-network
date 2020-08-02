@@ -31,7 +31,7 @@ export default class Post extends React.Component {
 			<div className="post">
 				<div className="post-inner">
 					<div className="post__header mb-4">
-						<Link className="flex items-center post__author" to="/user">
+						<Link className="flex items-center post__author" to={`/users/${this.props.author.id}`}>
 							<img className="post__avatar mr-2" src={catImg} alt="Avatar" />
 							{this.props.author.name}
 						</Link>

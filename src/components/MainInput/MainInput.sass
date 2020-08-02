@@ -1,8 +1,11 @@
 @import '../../static/sass/index.sass'
 
 .reply
-	&__avatar img
-		@extend .circle-avatar
+	&__avatar
+		margin-bottom: 0 !important
+		
+		img
+			@extend .circle-avatar
 
 	&__input
 		@include placeholder($white-secondary)

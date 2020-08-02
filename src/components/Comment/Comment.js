@@ -23,11 +23,11 @@ export default class Comment extends React.Component {
 	render() {
 		return (
 			<div className="flex comment">
-				<a className="mr-3 comment__author-avatar">
+				<p className="mr-3 comment__author-avatar">
 					<img src={catImg} alt="Avatar" />
-				</a>
+				</p>
 				<div className="comment__content">
-					<a className="comment__author">{this.props.comment.email}</a>
+					<p className="comment__author">{this.props.comment.email}</p>
 					<p className="comment__text">{this.props.comment.body}</p>
 					<div className="flex justify-between comment__footer">
 						<div className="flex">

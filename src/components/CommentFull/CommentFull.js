@@ -51,7 +51,7 @@ class CommentFull extends React.Component {
 						{this.renderComments()}
 						{
 							!this.state.toShowAll && this.state.comments.length > 2
-							? <a className="bold-yellow"  style={{fontSize: '14px'}} onClick={this.showAllComments}>Show more comments</a>
+							? <p className="bold-yellow"  style={{fontSize: '14px', marginBottom: '0'}} onClick={this.showAllComments}>Show more comments</p>
 							: null 
 						}
 					</div>

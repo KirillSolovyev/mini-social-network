@@ -27,9 +27,9 @@ export default class MainInput extends React.Component {
 	render() {
 		return (
 			<form className="flex items-center reply" onSubmit={this.handleClick}>
-				<a className="reply__avatar mr-3" href="#">
+				<p className="reply__avatar mr-3">
 					<img src={cat} alt="Avatar" />
-				</a>
+				</p>
 				<div className="input-with-icons flex grow-1-1">
 					<input 
 						className="reply__input" 
