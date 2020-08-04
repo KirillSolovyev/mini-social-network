@@ -39,8 +39,8 @@ export default class Post extends React.Component {
 					<div className="post__content">
 						<p className="post__text">{this.props.post.body}</p>
 						{
-							this.props.post.image
-							? <img className="post__image" src={catImg} alt="Img" />
+							this.props.post.image 
+							? <img className="post__image" src={catImg} alt="Img" data-testid="postImage"/>
 							: null
 						}
 					</div>
@@ -49,6 +49,7 @@ export default class Post extends React.Component {
 							<p 
 								className={`flex items-center post__icon post__icon_like mr-3 ${this.state.isLiked ? 'post__icon_like-active' : ''}`}
 								onClick={this.handleClickLike}
+								data-testid="likeBtn"
 							>
 								<span className="post-like-count">{this.state.likes}</span>
 							</p>

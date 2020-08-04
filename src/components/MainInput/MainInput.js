@@ -26,7 +26,7 @@ export default class MainInput extends React.Component {
 
 	render() {
 		return (
-			<form className="flex items-center reply" onSubmit={this.handleClick}>
+			<form className="flex items-center reply" onSubmit={this.handleClick} data-testid="inputForm">
 				<p className="reply__avatar mr-3">
 					<img src={cat} alt="Avatar" />
 				</p>
@@ -37,6 +37,7 @@ export default class MainInput extends React.Component {
 						value={this.state.value}
 						placeholder={this.props.placeholder} 
 						onChange={this.handleChange}
+						data-testid="input"
 					/>
 					<span className="input-camera" style={{right: '5px'}}></span>									
 				</div>

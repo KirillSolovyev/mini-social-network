@@ -27,8 +27,8 @@ export default class Comment extends React.Component {
 					<img src={catImg} alt="Avatar" />
 				</p>
 				<div className="comment__content">
-					<p className="comment__author">{this.props.comment.email}</p>
-					<p className="comment__text">{this.props.comment.body}</p>
+					<p className="comment__author" data-testid='commentAuthor'>{this.props.comment.email}</p>
+					<p className="comment__text" data-testid='commentBody'>{this.props.comment.body}</p>
 					<div className="flex justify-between comment__footer">
 						<div className="flex">
 							<span className="comment__date mr-2">3 hours ago</span>
@@ -36,6 +36,7 @@ export default class Comment extends React.Component {
 						<span 
 							className={`flex items-center comment__likes ${this.state.isLiked ? 'comment__likes-active' : ''}`} 
 							onClick={this.handleClickLike}
+							data-testid="likeBtn"
 						>{this.state.likes}</span>
 					</div>
 				</div>
